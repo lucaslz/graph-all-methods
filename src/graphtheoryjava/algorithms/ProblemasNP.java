@@ -26,8 +26,16 @@ public class ProblemasNP {
 
         while (!naoVisitados.isEmpty()) {
             for (int i = 0; i < naoVisitados.size(); i++) {
-                v = 1;
+                for (int j = 0; j < naoVisitados.size(); j++) {
+                    if (this.u.get(0).equals(i)) {
+                        System.out.println(v+"===="+i);
+                        if (this.graph.adjMatrix[v][j] > this.graph.adjMatrix[i][j]) { 
+                            v = j;   
+                        }
+                    }
+                }
             }
+            
             this.S.add(v);
             naoVisitados.remove(v);
             this.u.add(0, v);
