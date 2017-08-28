@@ -27,7 +27,7 @@ public class Main {
             Reader reader = new Reader();
 
             Graph graph = reader.readFile(fileName);
-            System.out.println("\nLista de Adjacencia: " + graph.adjList);
+//            System.out.println("\nLista de Adjacencia: " + graph.adjList);
             
             ProblemasNP caxeiro = new ProblemasNP(graph);
             System.out.println("\nColocaração de Vertices: " + caxeiro.greedyCol());

@@ -29,7 +29,7 @@ public class Reader {
             
             //Initialize data structures
             ArrayList<Integer> vertices = new ArrayList<>();
-            ArrayList<ArrayList<Edge>> adjList = new ArrayList<>();
+            ArrayList<ArrayList<Edge>> adjList = new ArrayList<ArrayList<Edge>>();
             int [][] adjMatrix = new int[numVertices][numVertices];
             ArrayList<Edge> edges = new ArrayList<>();
             
@@ -41,7 +41,7 @@ public class Reader {
             }
             
             for(int i= 0; i < numVertices; ++i) {
-                adjList.add(new ArrayList<>());
+                adjList.add(new ArrayList<Edge>());
             }
             
             //Fill structures
