@@ -14,6 +14,8 @@ public class ProblemasNP {
     private Graph graph;
     public ArrayList u = new ArrayList();
     public ArrayList S = new ArrayList();
+    public ArrayList cores = new ArrayList();
+    public ArrayList coresPossiveis = new ArrayList();
     long tempoInicial;
     long tempoFinal;
     
@@ -92,5 +94,26 @@ public class ProblemasNP {
         }
         
         return custo;
+    }
+    
+    public ArrayList greedyCol () {
+        for (int i = 0; i < this.graph.vertices.size(); i++) {
+            this.S.add(i);
+            this.cores.add(i);
+        }
+        
+        for (int u = 0; u < this.graph.vertices.size(); u++) {
+            this.coresPossiveis = this.cores;
+            for (int i = 0; i < this.cores.size(); i++) {
+                for (int v = 0; v < u; v++) {
+                    if (this.S.get(v).equals(i) && this.coresPossiveis.contains(i)) {
+                        this.coresPossiveis.remove(i);
+                    }
+                }
+            }
+            this.S.add(u, this.coresPossiveis.get(0));
+        }
+        
+        return this.S;
     }
 }

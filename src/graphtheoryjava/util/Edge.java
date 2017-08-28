@@ -12,6 +12,10 @@ public class Edge {
         this.weight = weight;
     }
 
+    Edge(int source, int sink) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String toString() {
         return "(" + source + ", " + destino + ", " + weight + ')';

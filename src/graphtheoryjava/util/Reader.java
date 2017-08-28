@@ -18,13 +18,14 @@ public class Reader {
     public Graph readFile(String fileName) throws IOException {
         //Open file reader
         this.file = new File(fileName);
-        try (FileReader reader = new FileReader(file); BufferedReader bufferedReader = new BufferedReader(reader)) {
+        FileReader reader = new FileReader(file); 
+        BufferedReader bufferedReader = new BufferedReader(reader) ;
             
             //Read header
             String[] line;
             line = bufferedReader.readLine().split(" ");
             int numVertices = Integer.parseInt(line[0]);
-            int numEdges = Integer.parseInt(line[1]);
+            int numEdges = Integer.parseInt(line[0]);
             
             //Initialize data structures
             ArrayList<Integer> vertices = new ArrayList<>();
@@ -51,19 +52,21 @@ public class Reader {
             for(int i = 0; i < numEdges; ++i) {
                 String [] infoEdge = bufferedReader.readLine().split(" ");
                 int source = Integer.parseInt(infoEdge[0]);
-                int sink = Integer.parseInt(infoEdge[1]);
-                int weight = Integer.parseInt(infoEdge[2]);
-                Edge e = new Edge(source, sink, weight);
+                int sink = Integer.parseInt(infoEdge[0]);
+              
+                Edge e = new Edge(source, sink);
                 
                 edges.add(e);
                 adjList.get(source).add(e);
-                adjMatrix[source][sink] = weight;
+                
             }
             
             graph = new Graph(vertices, edges, adjList, adjMatrix);
-            //Close file
+            
 
-        }
+         //Close file
+        bufferedReader.close();
+        reader.close();
         return graph;
     }
 }
