@@ -30,7 +30,8 @@ public class Main {
 //            System.out.println("\nLista de Adjacencia: " + graph.adjList);
             
             ProblemasNP caxeiro = new ProblemasNP(graph);
-            System.out.println("\nColocaração de Vertices: " + caxeiro.greedyCol());
+            caxeiro.greedyCol();
+            System.out.println("\nColocaração de Vertices: " + caxeiro.recol());
             
 //            Info info = new Info(graph);
             

@@ -101,6 +101,7 @@ public class ProblemasNP {
             this.S.add(i);
             this.cores.add(i);
         }
+        System.out.println(this.S);
         for (int u = 0; u < this.graph.vertices.size(); u++) {
             this.coresPossiveis = this.cores;
             for (int i = 0; i < this.cores.size(); i++) {
@@ -110,24 +111,22 @@ public class ProblemasNP {
                     }
                 }
             }
-            this.S.add(u, this.coresPossiveis.get(0));
+            this.S.set(u, this.coresPossiveis.get(0));
         }
         return this.S;
     }
     
     public ArrayList recol() {
         ArrayList cores = this.S;
-        Random randomGenerator = null;
+        Random randomGenerator = new Random();
         long inicio = System.currentTimeMillis();
-        ArrayList S1 = new ArrayList();
-        int u = 0;
-        int c = 0;
-        
-        while (System.currentTimeMillis() - inicio <= 100000) {
-            u = randomGenerator.nextInt(this.S.size());
-            c = randomGenerator.nextInt(this.S.size() - 1);
 
-            S1 = this.S;
+        System.out.println(this.S);
+        while (System.currentTimeMillis() - inicio <= 100000) {
+           int u = randomGenerator.nextInt(this.S.size());
+           int c = randomGenerator.nextInt(this.S.size()- 1);
+
+            ArrayList S1 = this.S;
 
             if (S1.contains(u)) {
                 S1.add(u, c);
